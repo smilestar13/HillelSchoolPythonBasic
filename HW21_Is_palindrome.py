@@ -3,19 +3,13 @@ import string
 
 def is_palindrome(str_a):
     str_a = str_a.lower().replace(' ', '')
-    lst_a = []
 
-    for el in str_a:
-        if el not in string.punctuation:
-            lst_a.append(el)
+    for el in string.punctuation:
+        str_a = str_a.replace(el, '')
 
-    lst_b = lst_a[:]
-    lst_b.reverse()
+    str_b = str_a[::-1]
 
-    if lst_a == lst_b:
-        return True
-    else:
-        return False
+    return str_a == str_b
 
 
 print(is_palindrome('A man, a plan, a canal: Panama'))
