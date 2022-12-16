@@ -1,10 +1,9 @@
-def difference(nums):
-
-    if len(nums) > 0:
-        res = max(nums) - min(nums)
+def difference(*args):
+    if not args:
+        return 0
     else:
-        res = 0
-    return res
+        res = max(*args) - min(*args)
+        return res
 
 
-print(round(difference((10.2, -2.2, 0, 1.1, 0.5)), 2))
+print(round(difference(10.2, -2.2, 0, 1.1, 0.5), 2))
