@@ -14,9 +14,6 @@ def delete_html_tags(html_file, result_file='cleaned.txt'):
             z = work_lst.index('<')
             t = work_lst.index('>')
             del work_lst[z:t + 1]
-            continue
-        if '<' or '>' not in work_lst:
-            break
 
     html_hh = codecs.open('cleaned.txt', 'w', 'utf-8')  # Создаю новый пустой файл 'cleaned.txt'
     # work_lst = ''.join(work_lst).split('  ')  # Можно убрать отступы
