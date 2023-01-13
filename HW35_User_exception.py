@@ -27,7 +27,7 @@ class Group:
 
     def add_student(self, student):
         if len(self.group) == 10:
-            raise ValueError('\nДостигнут максимум студентов!!!\n')
+            raise UserException('\nДостигнут максимум студентов!!!\n')
         else:
             self.group.add(student)
 
@@ -45,6 +45,16 @@ class Group:
         for st in self.group:
             all_students += f'\n{st}'
         return f'Number:{self.number}\n {all_students}'
+
+
+class UserException(Exception):
+
+    def __init__(self, message):
+        super().__init__()
+        self.message = message
+
+    def get_exception_message(self):
+        return self.message
 
 
 # Основной костяк группы 1
@@ -79,8 +89,8 @@ print(f'Группа студентов в начале: \n{gr}')
 # Пробуем добавить студента вне диапазона количества группы. Вызов ошибки сделал через \n чтобы бросалась в глаза сразу
 try:
     gr.add_student(st11)  # ValueError
-except ValueError as e:
-    print(e)  # Достигнут максимум
+except UserException as e:
+    print(e.message)  # Достигнут максимум
 
 # Поиск студентов по фамилиям
 print(gr.find_student('Jobs'))
@@ -92,8 +102,8 @@ gr.delete_student('Taylor')
 # Пробуем еще раз добавить новенького после исключения плохиша
 try:
     gr.add_student(st11)  # ValueError
-except ValueError as e:
-    print(e)  # Достигнут максимум
+except UserException as e:
+    print(e.message)  # Достигнут максимум
 
 # Выводим финальную группу студентов
 print(f'\nФинальная группа: \n{gr}')
